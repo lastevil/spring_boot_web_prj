@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Catalog</title>
+</head>
+<body>
+<h1>Корзина</h1>
+<p>
+<table>
+    <tr>
+        <th>Товар</th>
+        <th>Цена</th>
+    </tr>
+    <tr th:each="p:${products}">
+        <td th:text="${p.getTitle}"></td>
+        <td th:text="${p.getCoast}"></td>
+        <td>
+            <form th:action="@{'/deleteFromCart/'+${p.getId}}">
+                <button>удалить</button>
+            </form>
+        </td>
+    </tr>
+</table>
+</p>
+<div>
+    <span th:text="'сумма товаров: '+${cartPrice}"></span>
+</div>
+<div>
+    <a th:href="@{/catalog}">
+    <span>Каталог</span>
+    </a>
+</div>
+
+</body>
+</html>
