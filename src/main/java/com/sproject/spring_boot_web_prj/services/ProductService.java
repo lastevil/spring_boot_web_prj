@@ -1,13 +1,13 @@
 package com.sproject.spring_boot_web_prj.services;
 
-import com.sproject.spring_boot_web_prj.model.Cart;
+import com.sproject.spring_boot_web_prj.repositorys.Cart;
 import com.sproject.spring_boot_web_prj.model.Product;
 import com.sproject.spring_boot_web_prj.repositorys.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ProductService {
@@ -32,14 +32,19 @@ public class ProductService {
         cart.delete(id);
     }
 
-    public double getCartSum(){
+    public void deleteAllFromCArt(Integer id) {
+        cart.deleteAllbyId(id);
+    }
+
+    public Double getCartSum() {
         return cart.getSum();
     }
 
-    public List getCart(){
+    public List getCart() {
         return cart.showCart();
     }
-    public Integer getCartCount(){
+
+    public Integer getCartCount() {
         return cart.getCount();
     }
 }
