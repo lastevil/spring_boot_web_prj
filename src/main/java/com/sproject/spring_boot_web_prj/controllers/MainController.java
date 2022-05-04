@@ -1,5 +1,5 @@
 package com.sproject.spring_boot_web_prj.controllers;
-import com.sproject.spring_boot_web_prj.model.Product;
+import com.sproject.spring_boot_web_prj.model.User;
 import com.sproject.spring_boot_web_prj.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,12 +7,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 public class MainController {
     @Autowired
     private ProductService productService;
+
+    @GetMapping("/login")
+    public User login(@RequestParam String login, @RequestParam String password){
+        return productService.getUserByLogin(login,password);
+    }
 
     @GetMapping("/catalog")
     public List catalog() {
